@@ -1,8 +1,10 @@
 server:
-  port: 8990
+  port: 8988
   jsp-servlet:
     init-parameters:
       development: true
+
+  context-path: /cmfz
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

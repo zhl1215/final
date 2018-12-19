@@ -7,43 +7,45 @@
     <meta http-equiv="description" content="this is my page">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="css/common.css" type="text/css"></link>
-	<link rel="stylesheet" href="css/login.css" type="text/css"></link>
-	<script type="text/javascript" src="script/jquery.js"></script>
-	<script type="text/javascript" src="script/common.js"></script>
+	<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css" type="text/css"></link>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css"></link>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/script/common.js"></script>
 	<script type="text/javascript">
 	
 		$(function(){
 			//点击更换验证码：
 			$("#captchaImage").click(function(){//点击更换验证码
-				alert("自己做");
+
+                $("#captchaImage").attr("src","${pageContext.request.contextPath}/code/getValidateCode?time="+new Date());
+
 			});
 			
 			//  form 表单提交
-			$("#loginForm").bind("submit",function(){
-				alert("自己做");
+			/*$("#loginForm").bind("submit",function(){
+				/!*发ajax验证验证码*!/
 				return false;
-			});
+			});*/
 		});
 	</script>
 </head>
 <body>
 	
 		<div class="login">
-			<form id="loginForm" action="../back/index.html" method="post" >
+			<form id="loginForm" action="${pageContext.request.contextPath}/user/login" method="post" >
 				
 				<table>
 					<tbody>
 						<tr>
 							<td width="190" rowspan="2" align="center" valign="bottom">
-								<img src="img/header_logo.gif" />
+								<img src="${pageContext.request.contextPath}/img/header_logo.gif" />
 							</td>
 							<th>
 								用户名:
 							</th>
 							<td>
-								<input type="text"  name="user.name" class="text" value="xxx" maxlength="20"/>
+								<input type="text"  name="phone" class="text" value="xxx" maxlength="20"/>
 							</td>
 					  </tr>
 					  <tr>
@@ -51,7 +53,7 @@
 								密&nbsp;&nbsp;&nbsp;码:
 							</th>
 							<td>
-								<input type="password" name="user.password" class="text" value="xxx" maxlength="20" autocomplete="off"/>
+								<input type="password" name="password" class="text" value="xxx" maxlength="20" autocomplete="off"/>
 							</td>
 					  </tr>
 					
@@ -59,8 +61,8 @@
 							<td>&nbsp;</td>
 							<th>验证码:</th>
 							<td>
-								<input type="text" id="enCode" name="enCode" class="text captcha" maxlength="4" autocomplete="off"/>
-								<img id="captchaImage" class="captchaImage" src="img/captcha.jpg" title="点击更换验证码"/>
+								<input type="text" id="enCode" name="validateCode" class="text captcha" maxlength="4" autocomplete="off"/>
+								<img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/code/getValidateCode" title="点击更换验证码"/>
 							</td>
 						</tr>					
 					<tr>
