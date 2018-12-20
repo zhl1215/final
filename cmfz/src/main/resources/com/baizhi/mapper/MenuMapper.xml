@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.mapper.MenuMapper">
+
+    <!--根据表连接，查出以及类别和二级类别之间的联系-->
+    <resultMap id="result1" type="com.baizhi.entity.Menu">
+        <id column="id1" property="id"></id>
+        <result column="title1" property="title"></result>
+        <result column="iconcls1" property="iconcls"></result>
+        <collection property="list" ofType="com.baizhi.entity.Menu">
+            <id column="id2" property="id"></id>
+            <result column="title2" property="title"></result>
+            <result column="iconcls2" property="iconcls"></result>
+            <result column="url2" property="url"></result>
+        </collection>
+    </resultMap>
+
+    <select id="queryAllMenus" resultMap="result1">
+        select m1.id id1,m1.title title1,m1.iconcls iconcls1,m2.id id2,m2.title title2,m2.iconcls iconcls2,m2.url url2
+        from (select * from cm_menu where parent_id is null) m1 left join cm_menu m2
+                                                                          on m1.id = m2.parent_id
+    </select>
+
+
+</mapper>

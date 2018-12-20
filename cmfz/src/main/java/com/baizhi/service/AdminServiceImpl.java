@@ -1,22 +1,20 @@
 package com.baizhi.service;
 
-import com.baizhi.entity.User;
-import com.baizhi.mapper.UserMapper;
+import com.baizhi.entity.Admin;
+import com.baizhi.mapper.AdminMapper;
 import com.baizhi.util.Md5Util;
-import javafx.scene.control.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 
 @Service
 @Transactional
-public class UserServiceImpl implements  UserService {
+public class AdminServiceImpl implements AdminService {
 
     @Autowired
-    private UserMapper userMapper;
+    private AdminMapper adminMapper;
 
 
 //此处缺少正确的事务控制
@@ -29,14 +27,14 @@ public class UserServiceImpl implements  UserService {
         //数据库通过phone查询一个用户
         System.out.println("2");
 
-        User user = userMapper.selectOneByPhone(phone);
-        if(user==null) return "user doesnt exist";
+        Admin admin = adminMapper.selectOneByPhone(phone);
+        if(admin ==null) return "admin doesnt exist";
         System.out.println("user不为空");
-        System.out.println(user);
+        System.out.println(admin);
 
-        String phone2 = user.getPhone();
+        String phone2 = admin.getPhone();
 
-        String password2 = user.getPassword();
+        String password2 = admin.getPassword();
 
         Boolean bb = Md5Util.checkPassword(password,password2);
         if(!bb) return "password is wrong";

@@ -1,0 +1,21 @@
+[{
+  "id":1,
+  "title":"轮播图管理",
+  "url": "",
+  "iconCls":"icon-add",
+  "children": [
+    {
+      "id":2,
+      "title":"轮播图1",
+      "url": "/datagrid/banner.jsp",
+      "iconCls":"icon-add"
+    },
+    {
+      "id":3,
+      "title":"轮播图2",
+      "url": "",
+      "iconCls":"icon-add"
+    }
+  ]
+
+}]

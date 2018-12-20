@@ -33,7 +33,7 @@
 <body>
 	
 		<div class="login">
-			<form id="loginForm" action="${pageContext.request.contextPath}/user/login" method="post" >
+			<form id="loginForm" action="${pageContext.request.contextPath}/admin/login" method="post" >
 				
 				<table>
 					<tbody>
@@ -45,7 +45,7 @@
 								用户名:
 							</th>
 							<td>
-								<input type="text"  name="phone" class="text" value="xxx" maxlength="20"/>
+								<input type="text"  name="phone" class="text"  maxlength="20"/>
 							</td>
 					  </tr>
 					  <tr>
@@ -53,7 +53,7 @@
 								密&nbsp;&nbsp;&nbsp;码:
 							</th>
 							<td>
-								<input type="password" name="password" class="text" value="xxx" maxlength="20" autocomplete="off"/>
+								<input type="password" name="password" class="text"  maxlength="20" autocomplete="off"/>
 							</td>
 					  </tr>
 					
