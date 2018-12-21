@@ -70,12 +70,14 @@ public class BannerController {
         banner.setStatus("down");
         bannerService.addOneBanner(banner);
         System.out.println("添加成功");
+        System.out.println("轮播图管理完成");
         return "success";
 
 
 
 
     }
+
 
     }
 
