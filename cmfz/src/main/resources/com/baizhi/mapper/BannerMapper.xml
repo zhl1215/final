@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.mapper.BannerMapper">
+
+
+<!--查询总条数-->
+
+    <select id="queryTotal"  resultType="Integer" >
+        select count(*)from cm_banner
+    </select>
+
+    <select id="queryRowsByCurPageAndPagesize" parameterType="Integer" resultType="Banner" >
+
+        select *
+        from cm_banner order by id desc limit ${(curPage-1)*pageSize},${pageSize}
+
+	</select>
+    <delete id="deleteOneBannerById" parameterType="Integer" >
+
+       delete from cm_banner where id=#{0}
+    </delete>
+    <!--修改轮播图状态-->
+    <update id="updateBannerStatus" parameterType="Banner" >
+        update cm_banner  set  status = #{banner.status} where id = ${banner.id}
+    </update>
+    <!--添加一张轮播图-->
+    <insert id="addOneBanner" parameterType="Banner" >
+
+      insert into cm_banner(title,img_path,status,pub_date,description) values (#{banner.title},#{banner.img_path},#{banner.status},#{banner.pub_date},#{banner.description})
+    </insert>
+
+
+</mapper>
